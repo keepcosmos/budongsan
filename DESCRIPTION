@@ -1,0 +1,10 @@
+Package: budongsan
+Type: Package
+Title: 주택 실거래가 API, 데이터, 활용 함수 제공
+Version: 0.1.0
+Author: Jaehyun Shin
+Maintainer: Jaehyun Shin <keepcosmos@gmail.com>
+Description: 주택 실거래가 API, 데이터, 활용 함수 제공
+License: MIT
+LazyData: TRUE
+RoxygenNote: 5.0.1
