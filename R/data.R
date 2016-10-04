@@ -5,6 +5,7 @@
 #' 면적은 m^2, 금액은 만원단위로 표시됩니다.\cr
 #'
 #' @name molit.rt.apt
+#' @encoding UTF-8
 #' @docType data
 #' @author Jaehyun Shin \email{keepcosmos@gmail.com}
 #' @references \url{http://rtdown.molit.go.kr}
@@ -19,6 +20,7 @@
 #' 면적은 m^2, 금액은 만원단위로 표시됩니다.\cr
 #'
 #' @name molit.rt.rh
+#' @encoding UTF-8
 #' @docType data
 #' @author Jaehyun Shin \email{keepcosmos@gmail.com}
 #' @references \url{http://rtdown.molit.go.kr}
@@ -33,6 +35,7 @@
 #' 면적은 m^2, 금액은 만원단위로 표시됩니다.\cr
 #'
 #' @name molit.rt.sh
+#' @encoding UTF-8
 #' @docType data
 #' @author Jaehyun Shin \email{keepcosmos@gmail.com}
 #' @references \url{http://rtdown.molit.go.kr}
