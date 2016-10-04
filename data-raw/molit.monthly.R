@@ -10,37 +10,72 @@ library(readxl)
 library(stringr)
 library(data.table)
 
-molit.data.convertToData <- function(year, month, pathPrefix = "data-raw/molit/monthly/"){
-  year <- as.integer(year)
-  month <- as.integer(month)
-  if(year < 2016) stop(paste(year, "must be greater than 2016"))
-  if(month > 12) stop(paste(month, "must be less than 12"))
-  month <- str_pad(month, 2, pad = "0")
+molit.data.convertToAPTData <- function(){ molit.data.convertToData("apt") }
+molit.data.convertToRHData <- function(){ molit.data.convertToData("rh") }
+molit.data.convertToSHData <- function(){ molit.data.convertToData("sh") }
 
+molit.data.convertToData <- function(type, pathPrefix = "data-raw/molit/monthly/"){
+  if(!type %in% c("apt", "rh", "sh")) stop(paste(type, "must be one of 'apt', 'rh', 'sh'"))
   filePrefix <- paste0(year, month)
   sourceFiles <- list.files(pathPrefix)
-  targetPathes <- paste0(pathPrefix, sourceFiles[grepl(paste0("^", filePrefix), sourceFiles)])
+  targetFiles <- sourceFiles[grepl(paste0(".", type, "."), sourceFiles)]
 
   result <- data.table()
 
-  for(target in targetPathes){
-    type <- ifelse(grepl(".apt.", target), "아파트",
-              ifelse(grepl(".rh.", target), "연립/다세대",
-                ifelse(grepl(".sh.", target), "단독/다가구",
-                  stop(paste(target, "is not supported file name."))
-                )
-              )
-            )
-    sheetNames <- excel_sheets(target)
+  for(target in targetFiles){
+    year <- as.integer(substr(target, 1, 4))
+    month <- as.integer(substr(target, 5, 6))
+
+    if(year < 2016) stop(paste(year, "must be greater than 2016, file name:", target))
+    if(month > 12) stop(paste(month, "must be less than 12, file name:", target))
+
+    targetPath <- targetPathes <- paste0(pathPrefix, target)
+    cat("converting", paste0("'", targetPath, "'"), "file...\n")
+    sheetNames <- excel_sheets(targetPath)
     for(sheet in sheetNames){
-      sheetData <- data.table(read_excel(target, sheet = sheet, skip = 7))
-      sheetData$type <- type
+      sheetData <- data.table(read_excel(targetPath, sheet = sheet, skip = 7))
+      sheetData$계약년 <- year
+      sheetData$계약월 <- month
       result <- rbind(result, sheetData, fill=T)
     }
   }
-  result
+
+  result <- molit.rt.cleaningColumnType(result)
+
+  objectName <- paste0("molit.rt.", type)
+  cat("save to", objectName, "object")
+  assign(objectName, result)
+  savePath <- paste0("data/", objectName, ".rda")
+  save(list=objectName, file = savePath)
 }
 
-molit.data.exists <- function(fileName, pathPrefix = "data/source/molit/monthly/"){
-
+molit.rt.cleaningColumnType <- function(data){
+  trim <- function (x){ gsub("^\\s+|\\s+$", "", x) }
+  convertMoneyToInteger <- function(x){ as.integer(gsub(",", "", x)) }
+  colnames(data) <- trim(gsub("\\((.*?)\\)$", "", colnames(data)))
+  colConvertors <- list(
+    "시군구" = function(x){ as.factor(trim(x)) },
+    "전용면적" = as.numeric,
+    "대지권면적" = as.numeric,
+    "연면적" = as.numeric,
+    "대지면적" = as.numeric,
+    "계약면적" = as.numeric,
+    "주택유형" = as.factor,
+    "계약년" = as.integer,
+    "계약월" = as.integer,
+    "계약일" = as.factor,
+    "전월세구분" = function(x){ as.factor(ifelse(is.na(x), "매매", x)) },
+    "거래금액" = convertMoneyToInteger,
+    "보증금" = convertMoneyToInteger,
+    "월세" = function(x){ replace(convertMoneyToInteger(x), 0, NA) },
+    "층" = as.integer,
+    "건축년도" = as.integer,
+    "도로명" = as.factor
+  )
+  for(col in colnames(data)){
+    if(!is.null(colConvertors[[col]])){
+      data[, eval(col) := colConvertors[[col]](data[[col]])]
+    }
+  }
+  data
 }
