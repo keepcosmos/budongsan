@@ -22,7 +22,6 @@ molit.data.convertToSHData <- function(){ molit.data.convertToData("sh") }
 
 molit.data.convertToData <- function(type, pathPrefix = "data-raw/molit/monthly/"){
   if(!type %in% c("apt", "rh", "sh")) stop(paste(type, "must be one of 'apt', 'rh', 'sh'"))
-  filePrefix <- paste0(year, month)
   sourceFiles <- list.files(pathPrefix)
   targetFiles <- sourceFiles[grepl(paste0(".", type, "."), sourceFiles)]
 
@@ -36,20 +35,20 @@ molit.data.convertToData <- function(type, pathPrefix = "data-raw/molit/monthly/
     if(month > 12) stop(paste(month, "must be less than 12, file name:", target))
 
     targetPath <- targetPathes <- paste0(pathPrefix, target)
-    cat("converting", paste0("'", targetPath, "'"), "file...\n")
+    cat("converting", paste0("'", targetPath, "'"), "...\n")
     sheetNames <- excel_sheets(targetPath)
     for(sheet in sheetNames){
       sheetData <- data.table(read_excel(targetPath, sheet = sheet, skip = 7))
-      sheetData$계약년 <- year
-      sheetData$계약월 <- month
+      sheetData[["계약년"]] <- year
+      sheetData[["계약월"]] <- month
       result <- rbind(result, sheetData, fill=T)
     }
   }
 
-  result <- molit.rt.cleaningColumnType(result)
+  result <<- molit.rt.cleaningColumnType(result)
 
   objectName <- paste0("molit.rt.", type)
-  cat("save to", objectName, "object")
+  cat("save to", objectName, "object\n")
   assign(objectName, result)
   savePath <- paste0("data/", objectName, ".rda")
   save(list=objectName, file = savePath)
@@ -59,7 +58,11 @@ molit.rt.cleaningColumnType <- function(data){
   trim <- function (x){ gsub("^\\s+|\\s+$", "", x) }
   convertMoneyToInteger <- function(x){ as.integer(gsub(",", "", x)) }
   colnames(data) <- trim(gsub("\\((.*?)\\)$", "", colnames(data)))
-  Encoding(colnames(data)) <- "UTF-8"
+
+  # ISSUE: macOS unknown encoding issue
+  Encoding(colnames(data)) <- 'latin1'
+  Encoding(colnames(data)) <- 'UTF-8'
+
   colConvertors <- list(
     "시군구" = function(x){ as.factor(trim(x)) },
     "전용면적" = as.numeric,

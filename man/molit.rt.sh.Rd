@@ -4,12 +4,13 @@
 \encoding{UTF-8}
 \name{molit.rt.sh}
 \alias{molit.rt.sh}
-\title{단독/다가구 실거래가}
+\title{molit.rt.sh}
 \format{Classes ‘data.table’ and 'data.frame'}
 \usage{
 molit.rt.sh
 }
 \description{
+단독/다가구 실거래가\cr
 이 데이터는 http://rt.molit.go.kr/에서 제공하는 단독/다가구 매매 및 전세 실거래가 정보입니다.\cr
 현재 2016년 1월부터 8월까지의 데이터가 생성되어있습니다.\cr
 면적은 m^2, 금액은 만원단위로 표시됩니다.\cr
