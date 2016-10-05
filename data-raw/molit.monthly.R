@@ -10,6 +10,12 @@ library(readxl)
 library(stringr)
 library(data.table)
 
+molit.data.convertAllRTData <- function(){
+  molit.data.convertToAPTData()
+  molit.data.convertToRHData()
+  molit.data.convertToSHData()
+}
+
 molit.data.convertToAPTData <- function(){ molit.data.convertToData("apt") }
 molit.data.convertToRHData <- function(){ molit.data.convertToData("rh") }
 molit.data.convertToSHData <- function(){ molit.data.convertToData("sh") }
@@ -53,6 +59,7 @@ molit.rt.cleaningColumnType <- function(data){
   trim <- function (x){ gsub("^\\s+|\\s+$", "", x) }
   convertMoneyToInteger <- function(x){ as.integer(gsub(",", "", x)) }
   colnames(data) <- trim(gsub("\\((.*?)\\)$", "", colnames(data)))
+  Encoding(colnames(data)) <- "UTF-8"
   colConvertors <- list(
     "시군구" = function(x){ as.factor(trim(x)) },
     "전용면적" = as.numeric,
@@ -64,7 +71,11 @@ molit.rt.cleaningColumnType <- function(data){
     "계약년" = as.integer,
     "계약월" = as.integer,
     "계약일" = as.factor,
-    "전월세구분" = function(x){ as.factor(ifelse(is.na(x), "매매", x)) },
+    "전월세구분" = function(x){
+      x <- ifelse(is.na(x), "매매", x)
+      Encoding(x) <- "UTF-8"
+      as.factor(x)
+    },
     "거래금액" = convertMoneyToInteger,
     "보증금" = convertMoneyToInteger,
     "월세" = function(x){ replace(convertMoneyToInteger(x), 0, NA) },
