@@ -45,7 +45,7 @@ molit.data.convertToData <- function(type, pathPrefix = "data-raw/molit/monthly/
     }
   }
 
-  result <<- molit.rt.cleaningColumnType(result)
+  result <- molit.rt.cleaningColumnType(result)
 
   objectName <- paste0("molit.rt.", type)
   cat("save to", objectName, "object\n")
