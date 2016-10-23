@@ -6,7 +6,7 @@
 ### 패키지 설치하기
 * `budongsan` 페키지를 설치하기 위해선 `devtools` 패키지가 필요합니다.
 
-```{r}
+```{R}
 install.packages("devtools")
 devtools::install_github("keepcosmos/budongsan")
 
@@ -14,7 +14,7 @@ library(budongsan)
 ```
 
 ### Datasets
-```
+```{R}
 # 아파트 전월세 및 매매 실거래 데이터
 molit.rt.apt
 
