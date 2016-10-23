@@ -1,10 +1,10 @@
 # Budongsan
-국토교통부(molit.go.kr)과 한국 감정원에서 제공하는 아파트, 단독/다가구, 연립/다세대 주택 실거래 정보 분석을 위한 dataset과 functions를 제공합니다.
+국토교통부(molit.go.kr)와 한국 감정원에서 제공하는 아파트, 단독/다가구, 연립/다세대 주택 실거래 정보 분석을 위한 dataset과 함수를 제공합니다.
 
-현재 http://rtdown.molit.go.kr 에서 제공되는 월간 실거래 정보를 R dataset을 제공하고 있습니다.
+현재는, http://rtdown.molit.go.kr 에서 제공되는 월간 실거래 정보에 대한 R dataset을 제공하고 있습니다.
 
 ### 패키지 설치하기
-* `budongsan` 페키지를 설치하기 위해선 `devtools` 패키지가 필요합니다.
+* `budongsan` 패키지를 설치하기 위해선 `devtools` 패키지가 필요합니다.
 
 ```{R}
 install.packages("devtools")
@@ -24,7 +24,7 @@ molit.rt.sh
 # 연립/다세대 전월세 및 매매 실거래 데이터
 molit.rt.rh
 ```
-* `help(molit.rt.apt)` 혹은 `?molit.rt.apt` 명령어를 통해 데이터에 대한 상세 정보를 확인 할 수 있습니다.
+* `help(molit.rt.apt)` 혹은 `?molit.rt.apt` 명령어를 통해 데이터에 대한 상세 정보를 확인할 수 있습니다.
 
 * 데이터 양이 큽니다. `data.table` 패키지를 먼저 추가해주면 더 빠르게 데이터를 활용할 수 있습니다.
 
