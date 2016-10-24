@@ -35,10 +35,6 @@ molit.rt.rh.2015
 * 데이터 양이 큽니다. `data.table` 패키지를 먼저 추가해주면 더 빠르게 데이터를 활용할 수 있습니다.
 * 면적은 평방미터, 가격은 만원단위로 표시됩니다.
 
-### Issue
-* Windows 환경에서 RStudio 사용 시, autocomplete이 활성화 되어 있을 경우 datasets에 대한 help메시지를 생성하며 워닝메시지가 발생합니다. Non-Ascii 문자에 대한 RStudio의 이슈이며, 해당 워닝 메시지는 무시하셔도 좋습니다. 신경쓰이신다면 autocomplete 기능을 꺼두시면 됩니다.
-
-
 ### TODO
 * 부동산 거래 정보 정보에 필요한 유용한 함수들 추가
 * 실거래 정보에 대한 국토 교통부 Open API 클라이언트 구현 (https://www.data.go.kr)
