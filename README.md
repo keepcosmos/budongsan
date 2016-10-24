@@ -35,6 +35,10 @@ molit.rt.rh.2015
 * 데이터 양이 큽니다. `data.table` 패키지를 먼저 추가해주면 더 빠르게 데이터를 활용할 수 있습니다.
 * 면적은 평방미터, 가격은 만원단위로 표시됩니다.
 
+## Contribution
+* 데이터를 활용한 어떤 분석이든 공유해주세요. PR뿐 아니라 Issue를 통한 제안이나 Gist를 통해 본인이 분석한 Script를 공유해주셔도 됩니다.
+* molit.go.kr에서 다운받은 raw 파일은 package size 문제로 `data-raw` 브랜치에서 관리합니다. 데이터를 정리한 후 rda파일만 master에 머지하고 있으니 참고해주세요.
+
 ### TODO
 * 부동산 거래 정보 정보에 필요한 유용한 함수들 추가
 * 실거래 정보에 대한 국토 교통부 Open API 클라이언트 구현 (https://www.data.go.kr)
