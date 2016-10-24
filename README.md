@@ -37,6 +37,7 @@ molit.rt.rh.2015
 * 면적은 평방미터, 가격은 만원단위로 표시됩니다.
 
 ## Contribution
+* 잘못된 데이터 / 제대로 cleaning된지 않은 데이터를 찾아주시는 것도 큰 도움이 됩니다.
 * 해당 데이터를 활용한 어떤 분석이든 공유해주세요. PR뿐 아니라 Issue를 통한 제안이나 Gist를 통해 본인이 분석한 Script를 공유해주셔도 됩니다.
 * molit.go.kr에서 다운받은 raw 파일은 package size 문제로 `data-raw` 브랜치에서 관리합니다. 데이터를 정리한 후 rda파일만 master에 머지하고 있으니 참고해주세요.
 
