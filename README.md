@@ -9,6 +9,7 @@
 ```{r}
 install.packages("devtools")
 devtools::install_github("keepcosmos/budongsan")
+# 100MB 이상의 데이터로 다소 시간이 소요될 수 있습니다.
 
 library(budongsan)
 ```
