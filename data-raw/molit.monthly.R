@@ -1,10 +1,10 @@
-# data/source/molit/montly 하위에 있는 국토교통부 실거래가 공개시스템에 개시된
+# data/source/molit 하위에 있는 국토교통부 실거래가 공개시스템에 개시된
 # 월별 아파트(apt), 연립/다세대(rh), 단독/다가구(sh) 주택의 매매(trade)/전월세(rent) 정보를
 # R data 파일로 변환한다.
 # 국토교통부에서 제공하는 소스 파일은
-# `data/source/molit/montly/{주택 타입}/{거래종류}.{YYYYMM}.xls` 로 존재하여야하며
+# `data-raw/molit/{year}/{YYYYMM}.{주택 타입}.{거래종류}.xls` 로 존재하여야하며
 # 결과는
-# `data/{주택 타입}.{거래종류}.{YYYYMM}` 으로 저장된다.
+# `data/molit.rt.{주택 타입}.{YYYYMM}` 으로 저장된다.
 
 library(readxl)
 library(stringr)

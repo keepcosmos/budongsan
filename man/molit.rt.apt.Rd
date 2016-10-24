@@ -11,10 +11,10 @@
 molit.rt.apt.2016
 }
 \description{
-아파트 실거래가\cr
-이 데이터는 국토교통부에서 제공하는 아파트 매매 및 전세 실거래가 정보입니다.\cr
-현재 2011년 1월부터 데이터가 생성되어있습니다.\cr
-면적은 평방미터, 금액은 만원단위로 표시됩니다.\cr
+Apartments Real Trading & Rent Datasets from 2011\cr
+source from molit.go.kr\cr
+\cr
+Call `molit.rt.apt.(year)`
 }
 \author{
 Jaehyun Shin \email{keepcosmos@gmail.com}
