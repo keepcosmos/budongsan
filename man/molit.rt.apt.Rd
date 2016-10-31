@@ -5,7 +5,7 @@
 \alias{molit.rt.apt}
 \alias{molit.rt.apt.2016}
 \title{molit.rt.apt}
-\format{Classes ‘data.table’ and 'data.frame'}
+\format{Classes 'data.table' and 'data.frame'}
 \usage{
 molit.rt.apt.2016
 }

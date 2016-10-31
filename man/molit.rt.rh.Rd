@@ -5,7 +5,7 @@
 \alias{molit.rt.rh}
 \alias{molit.rt.rh.2016}
 \title{molit.rt.rh}
-\format{Classes ‘data.table’ and 'data.frame'}
+\format{Classes 'data.table' and 'data.frame'}
 \usage{
 molit.rt.rh.2016
 }
