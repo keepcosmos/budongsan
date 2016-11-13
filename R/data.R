@@ -44,7 +44,7 @@
 #' @format Classes 'data.table' and 'data.frame'
 'molit.rt.sh.2016'
 
-molit.rt.years <- c(2011:2016)
+molit.rt.years <- c(2006:2016)
 molit.rt.types <- c("sh", "rh", "apt")
 #' @encoding UTF-8
 molit.rt.colnameKorToEng <- list(
@@ -81,8 +81,8 @@ molit.rt.colnameKorToEng <- list(
 #' @param region Location name
 #' @param engColNames Convert to English column names, default TRUE
 #' @examples
-#'     molit.rt.get("sh", "강남구")
-#'     molit.rt.get("apt", "서현동")
+#'     molit.rt.get("sh", address)
+#'     molit.rt.get("apt", address)
 molit.rt.get <- function(type = NA, region = NA, colnames.locale = "en"){
   molit.rt.checkType(type)
 

@@ -10,7 +10,7 @@ library(readxl)
 library(stringr)
 library(data.table)
 
-molit.data.years = c(2011:2016)
+molit.data.years = c(2006:2016)
 
 molit.data.convertAllRTData <- function(){
   for(year in molit.data.years){
@@ -35,7 +35,7 @@ molit.data.convertToData <- function(type, year, pathPrefix = "data-raw/molit/")
   for(target in targetFiles){
     month <- as.integer(substr(target, 5, 6))
 
-    if(year < 2011) stop(paste(year, "must be greater than 2011, file name:", target))
+    if(year < 2006) stop(paste(year, "must be greater than 2011, file name:", target))
     if(month > 12) stop(paste(month, "must be less than 12, file name:", target))
 
     targetPath <- targetPathes <- paste0(sourcePath, target)
