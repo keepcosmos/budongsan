@@ -100,6 +100,9 @@ molit.rt.get <- function(type = NA, region = NA, colnames.locale = "en"){
     result <- rbind(result, rtData, fill=TRUE)
   }
 
+  result[result[["계약년"]] < 2011, "전월세구분" := "매매"]
+  result[["전월세구분"]] <- as.factor(as.character(result[["전월세구분"]]))
+
   if(colnames.locale == "en"){
     result <- molit.rt.convertToEngColNames(result)
   }
