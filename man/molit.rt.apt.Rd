@@ -10,7 +10,7 @@
 molit.rt.apt.2016
 }
 \description{
-Apartments Real Trading & Rent Datasets from 2011\cr
+Apartments Real Trading & Rent Datasets from 2006\cr
 source from molit.go.kr\cr
 \cr
 Call 'molit.rt.apt.(year)'

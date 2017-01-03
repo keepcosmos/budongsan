@@ -1,7 +1,7 @@
 Package: budongsan
 Type: Package
 Title: Trading and rent datasets and analytics functions for Korean houses
-Version: 0.3.0
+Version: 0.3.1
 Author: Jaehyun Shin
 Maintainer: Jaehyun Shin <keepcosmos@gmail.com>
 Description: Trading and rent datasets and analytics functions for Korean houses

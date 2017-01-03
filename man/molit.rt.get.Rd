@@ -18,7 +18,7 @@ molit.rt.get(type = NA, region = NA, colnames.locale = "en")
 Get data by type and region name
 }
 \examples{
-    molit.rt.get("sh", "강남구")
-    molit.rt.get("apt", "서현동")
+    molit.rt.get("sh", address)
+    molit.rt.get("apt", address)
 }
 
