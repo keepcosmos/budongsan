@@ -1,4 +1,7 @@
 # Budongsan
+
+**현재 데이터는 2016년까지만 제공됩니다. http://rtdown.molit.go.kr/download/downloadMainList.do**
+
 국토교통부(molit.go.kr)와 한국 감정원에서 제공하는 아파트, 단독/다가구, 연립/다세대 주택 실거래 정보 분석을 위한 dataset과 함수를 제공합니다.
 
 현재는, http://rtdown.molit.go.kr 에서 제공되는 2006~2016년까지의 모든 실거래 정보에 대한 R dataset을 제공하고 있습니다.
